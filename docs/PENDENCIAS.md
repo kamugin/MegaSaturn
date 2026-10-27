@@ -1,19 +1,19 @@
 # Pendências
 
-- [x] Visibilidade pública confirmada pelo responsável.
-- [x] Criação sob `kamugin` confirmada.
-- [x] Repositório criado; API confirmou permissões de administração e escrita.
-- [ ] Recuperar o conteúdo completo da conversa técnica e seus anexos.
-- [ ] Receber os fontes e artefatos originais da v0.6.
-- [ ] Registrar origem e manifesto SHA-256 dos originais.
-- [ ] Recuperar histórico de versões e funcionalidades realmente confirmadas.
-- [ ] Identificar arquitetura, dependências, licenças e ambiente de build.
-- [ ] Definir licença do projeto com o responsável.
-- [ ] Importar o snapshot original em commit separado, preservando histórico disponível.
-- [ ] Confirmar o commit que representa v0.6 antes de criar uma tag.
-- [ ] Reproduzir compilação e testes com logs reais.
-- [ ] Abrir o checkout no Codex e verificar a continuidade usando README.md e AGENTS.md.
+- [x] Repositório público autorizado e criado.
+- [x] Dois RAR recebidos e preservados com SHA-256.
+- [x] Fontes PC v0.6 importados sem alterações em commit separado.
+- [x] Seis testes originais recompilados e aprovados.
+- [x] MOVE.W/L e MOVEA.W/L com origem An implementados.
+- [x] Regressão falha na base original e passa na corrigida.
+- [x] CMake/CTest: 7/7 testes aprovados.
+- [x] Três módulos compilados para SH-2 big-endian sem avisos.
+- [ ] Revisar licença do exemplo libyaul e procedência dos assets.
+- [ ] Integrar núcleo a harness Saturn, com RAM estática.
+- [ ] Reproduzir link e mídia Saturn; executar em emulador/hardware.
+- [ ] Implementar reset por vetores e ampliar instruções com testes.
+- [ ] Expandir mapa, exceções e temporização.
+- [ ] Implementar VDP, entrada, Z80 e áudio.
+- [ ] Definir licença geral e confirmar tag histórica.
 
-## Critério de migração concluída
-
-A migração estará completa quando o repositório autorizado contiver a documentação e os originais preservados, a referência v0.6 estiver vinculada ao snapshot validado e as lacunas restantes estiverem registradas. Este pacote sozinho conclui apenas a preparação documental.
+Ainda não executa jogos. Prioridade seguinte: levar a suíte do núcleo ao Saturn.

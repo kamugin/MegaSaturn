@@ -25,12 +25,17 @@ static int write_size(ms_bus_t *bus,uint32_t addr,unsigned size,uint32_t v) {
     if(size==2)return ms_write16(bus,addr,(uint16_t)v)?-1:0;
     return ms_write32(bus,addr,v)?-1:0;
 }
-/* mode 0 Dn, 2 (An), 3 (An)+, 4 -(An), 5 d16(An),
+/* mode 0 Dn, 1 An (word/long source only), 2 (An), 3 (An)+, 4 -(An), 5 d16(An),
    7/0 absolute short, 7/1 absolute long, 7/4 immediate (source only). */
 static int operand(ms_cpu_t *c,ms_bus_t *b,uint32_t *pc,unsigned mode,
                    unsigned reg,unsigned size,int source,uint32_t *value) {
     uint32_t addr=0,delta=(size==1 && reg==7)?2u:size;
     uint16_t ext;
+    if(mode==1) {
+        if(!source || size==1)return -2;
+        *value=c->a[reg] & (size==2?0xffffu:0xffffffffu);
+        return 0;
+    }
     if(mode==0) {
         if(source) *value=c->d[reg] & (size==1?0xffu:size==2?0xffffu:0xffffffffu);
         else {
@@ -69,13 +74,13 @@ static int move_instruction(ms_cpu_t *cpu,ms_bus_t *bus,uint16_t op) {
     switch(op>>12) {case 1:size=1;break;case 2:size=4;break;case 3:size=2;break;default:return -2;}
     /* MOVEA: destination address register, byte size invalid; CCR unchanged. */
     if(dm==1) {
-        if(size==1 || sm==1)return -2;
+        if(size==1)return -2;
         rc=operand(&next,bus,&pc,sm,sr,size,1,&value);
         if(rc)return rc;
         next.a[dr]=size==2?(uint32_t)(int32_t)(int16_t)value:value;
         next.pc=pc;*cpu=next;return 0;
     }
-    if(sm==1)return -2; /* MOVE from An not supported by this subset */
+    if(sm==1 && size==1)return -2; /* 68000 forbids byte reads from An. */
     /* Validate destination before reading source (avoid unsupported partial changes). */
     if(!(dm==0 || dm==2 || dm==3 || dm==4 || dm==5 || (dm==7 && dr<=1)))return -2;
     rc=operand(&next,bus,&pc,sm,sr,size,1,&value);

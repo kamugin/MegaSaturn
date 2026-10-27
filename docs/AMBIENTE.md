@@ -1,18 +1,21 @@
-# Ambiente
+# Ambiente verificado
 
-## Situação
+Windows, CMake 4.4 e GCC MinGW 16.2.0. Seis testes originais aprovados com -std=c11 -O2 -Wall -Wextra -pedantic. Suíte CMake atual: 7/7 aprovados.
 
-O ambiente de desenvolvimento e execução da v0.6 não foi recuperado. Não há toolchain, SDK, versão de biblioteca, sistema operacional, comando de compilação ou procedimento de execução confirmado.
+## Windows/MSYS2
 
-## Dados a recuperar
+Na raiz do checkout:
+```powershell
+$env:PATH = 'C:\msys64\mingw64\bin;C:\msys64\usr\bin;' + $env:PATH
+cmake -S . -B build/native -G 'Unix Makefiles' -DCMAKE_C_COMPILER=C:/msys64/mingw64/bin/gcc.exe -DCMAKE_MAKE_PROGRAM=C:/msys64/usr/bin/make.exe
+cmake --build build/native
+ctest --test-dir build/native --output-on-failure
+```
 
-- Sistema e versões usados originalmente.
-- Compilador, assembler, linker e respectivas versões.
-- Dependências, origem, versões e licenças.
-- Scripts de build, configuração e variáveis necessárias, sem segredos.
-- Procedimento para executar em hardware ou emulador, com versões e evidências.
-- Arquivos necessários ao teste e permissões de uso/distribuição.
+O make MSYS2 precisou executar fora da restrição de processos do agente. Nenhuma instalação ou alteração do sistema foi necessária.
 
-## Reprodução futura
+## SH-2
 
-Após recuperar os originais, documentar os comandos reais, desde a preparação até a execução, e registrar logs e hashes dos artefatos gerados. Não há teste de emulação ou build possível apenas com este pacote documental.
+Compilador existente sh2eb-elf-gcc, opções -m2 -mb -std=c11 -Os -Wall -Wextra -Wpedantic -Werror -ffreestanding -c: módulos cpu/bus/exec compilados sem avisos. Apenas objetos; não houve link ou execução em hardware.
+
+O protótipo recebido usa YAUL_INSTALL_ROOT e build.pre.mk, build.tga.mk, build.post.iso-cue.mk. Seu build completo não foi reproduzido.
