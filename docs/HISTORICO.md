@@ -1,13 +1,10 @@
-# Histórico e procedência
+# Histórico
 
-## Contexto do projeto
+- Recuperação em 2026-10-27 de dois pacotes fornecidos pelo responsável.
+- Seis testes originais da base PC v0.6 recompilados e aprovados.
+- Commit 40c9e89: importação dos fontes originais, separada das mudanças.
+- Implementação posterior: MOVE/MOVEA com origem An e suíte CMake.
+- Regressão nova falha na base original e passa na corrigida; 7/7 testes atuais aprovados.
+- Núcleo cpu/bus/exec compilado para SH-2 big-endian sem avisos.
 
-O objetivo é criar o projeto MegaSaturn no GitHub, preparar sua continuidade no Codex e preservar o marco v0.6 informado pelo responsável.
-
-## Informações ainda necessárias
-
-O histórico técnico completo e os arquivos originais não estão incluídos nesta migração. Ainda é necessário recuperar a evolução até v0.6, as datas de versões, mudanças, autoria, testes e decisões de arquitetura.
-
-## Preparação documental
-
-Este repositório começa com documentação de migração, sem fontes de emulador, binários ou tag de release. O conteúdo original da v0.6 deverá ser importado separadamente após sua recuperação e validação.
+READMEs originais em pc/ descrevem v0.5/v0.6. A evolução anterior e os resultados históricos de hardware ainda não foram reconstruídos. Não foi presumida equivalência entre o protótipo Saturn e a base PC.

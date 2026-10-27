@@ -1,27 +1,14 @@
-# Preservação do estado v0.6
+# Preservação v0.6
 
-## Marco informado
+Recebidos os dois RAR em 2026-10-27. Os originais permanecem intactos e foram copiados para arquivo local separado do desenvolvimento.
 
-O responsável indicou v0.6 como estado confirmado a preservar. Isso confirma a referência desejada para continuidade; não confirma o conteúdo de arquivos ainda indisponíveis nesta sessão.
-
-## Inventário atual
-
-| Item | Situação |
+| Arquivo | SHA-256 |
 | --- | --- |
-| Fontes originais v0.6 | Não recebidos |
-| Binários ou imagem de mídia | Não recebidos |
-| Commit/tag original | Não identificado |
-| Manifesto SHA-256 dos originais | Não disponível |
-| Funcionalidades e limitações confirmadas | Detalhamento não recuperado |
-| Logs e resultados de execução | Não recebidos |
+| MegaSaturn.rar | B7EB013411EB375C6C6093F0D2820D864D93A1071527117609EE155CA022C1D0 |
+| MegaSaturn_PC_v0_6.rar | 65AA591DB98755B1ADC3B434C070005A38DD6111B5BB360C6FE9B1DA41D62AD7 |
 
-## Procedimento de preservação
+O segundo pacote identifica o núcleo PC como v0.6 em README_v06.txt. O primeiro contém protótipo libyaul Saturn; não foi presumida equivalência de revisão.
 
-1. Receber o arquivo original ou localizar o repositório existente.
-2. Registrar origem, data de recebimento, nomes e SHA-256 dos arquivos recebidos.
-3. Preservar o material original antes de qualquer edição e revisar o que pode ser versionado.
-4. Importar o snapshot autorizado em commit separado da documentação de migração.
-5. Validar com o responsável a correspondência com v0.6.
-6. Somente então criar ou preservar a referência v0.6 no commit correto, sem reescrever histórico existente.
+Commit de importação dos fontes PC originais: `40c9e89`. Arquivos C/H/TXT importados sem alterações. O executável recebido não foi executado nem versionado. [Manifesto do pacote PC](V06-SHA256.txt), incluindo o executável arquivado localmente.
 
-Não gerar uma implementação substituta para preencher a ausência dos originais.
+Os seis testes originais passaram após recompilação com GCC 16.2.0. As melhorias ficam em commit posterior. Nenhuma tag v0.6 foi criada ou movida.
